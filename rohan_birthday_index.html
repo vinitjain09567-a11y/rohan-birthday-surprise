@@ -1,0 +1,739 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
+
+<title>💗 Birthday Surprise 💗</title>
+
+<style>
+
+* {
+    box-sizing: border-box;
+}
+
+html,
+body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    min-height: 100%;
+}
+
+body {
+
+    font-family:
+        "Segoe UI",
+        Arial,
+        sans-serif;
+
+    background:
+        radial-gradient(
+            circle at top,
+            #ffe6f0,
+            #ffb0ca 45%,
+            #ff6d9c
+        );
+
+    color: #111;
+
+    overflow-x: hidden;
+}
+
+/* ---------------- CARD ---------------- */
+
+.container {
+
+    min-height: 100vh;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    padding: 25px;
+
+}
+
+.card {
+
+    width: min(92vw, 620px);
+
+    background:
+        rgba(255, 235, 243, 0.96);
+
+    border:
+        3px solid #ff4f87;
+
+    border-radius: 32px;
+
+    padding: 30px 24px;
+
+    text-align: center;
+
+    box-shadow:
+        0 20px 60px
+        rgba(120, 0, 50, 0.25),
+
+        0 0 30px
+        rgba(255,255,255,0.8);
+
+    position: relative;
+
+    z-index: 10;
+
+}
+
+/* ---------------- TEXT ---------------- */
+
+h1 {
+
+    color: #d41454;
+
+    font-size:
+        clamp(30px, 8vw, 50px);
+
+    margin:
+        10px 0 20px;
+
+}
+
+h2 {
+
+    color: #c10d4c;
+
+}
+
+.question {
+
+    font-size:
+        clamp(21px, 5vw, 32px);
+
+    font-weight: bold;
+
+    line-height: 1.4;
+
+    margin: 25px 0;
+
+}
+
+.subtitle {
+
+    font-size: 17px;
+
+    line-height: 1.6;
+
+}
+
+/* ---------------- HEART ---------------- */
+
+.big-heart {
+
+    font-size: 72px;
+
+    animation:
+        heartbeat 1.2s infinite;
+
+}
+
+@keyframes heartbeat {
+
+    0%, 100% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.18);
+    }
+
+}
+
+/* ---------------- BUTTONS ---------------- */
+
+.buttons {
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    gap: 18px;
+
+    flex-wrap: wrap;
+
+    margin-top: 25px;
+
+}
+
+button {
+
+    border: none;
+
+    border-radius: 50px;
+
+    padding:
+        15px 38px;
+
+    font-size: 18px;
+
+    font-weight: bold;
+
+    cursor: pointer;
+
+    transition:
+        transform 0.25s;
+
+}
+
+button:hover {
+
+    transform: scale(1.08);
+
+}
+
+.yes {
+
+    background:
+        #ff3478;
+
+    color: white;
+
+    box-shadow:
+        0 8px 22px
+        rgba(255,52,120,0.35);
+
+}
+
+.no {
+
+    background: white;
+
+    color: #111;
+
+    border:
+        2px solid #ff5d91;
+
+}
+
+/* ---------------- MESSAGE ---------------- */
+
+#birthday {
+
+    display: none;
+
+    animation:
+        appear 1s ease;
+
+}
+
+.message {
+
+    background:
+        #ffb6ce;
+
+    border:
+        2px solid #ff5a91;
+
+    border-radius: 25px;
+
+    padding: 25px;
+
+    margin-top: 20px;
+
+    color: #111;
+
+    line-height: 1.75;
+
+    font-size: 18px;
+
+}
+
+.signature {
+
+    margin-top: 20px;
+
+    font-size: 21px;
+
+    font-weight: bold;
+
+    color: #b80045;
+
+}
+
+.rose-area {
+
+    font-size: 42px;
+
+    margin: 18px 0;
+
+    letter-spacing: 5px;
+
+}
+
+@keyframes appear {
+
+    from {
+
+        opacity: 0;
+
+        transform:
+            translateY(30px)
+            scale(0.9);
+
+    }
+
+    to {
+
+        opacity: 1;
+
+        transform:
+            translateY(0)
+            scale(1);
+
+    }
+
+}
+
+/* ---------------- FALLING ROSES ---------------- */
+
+.rose {
+
+    position: fixed;
+
+    top: -80px;
+
+    z-index: 2;
+
+    pointer-events: none;
+
+    animation:
+        fall linear forwards;
+
+}
+
+@keyframes fall {
+
+    from {
+
+        transform:
+            translateY(-80px)
+            rotate(0deg);
+
+        opacity: 1;
+
+    }
+
+    to {
+
+        transform:
+            translateY(110vh)
+            rotate(360deg);
+
+        opacity: 0;
+
+    }
+
+}
+
+/* ---------------- SPARKLES ---------------- */
+
+.sparkle {
+
+    position: fixed;
+
+    z-index: 20;
+
+    pointer-events: none;
+
+    font-size: 25px;
+
+    animation:
+        sparkleMove 1.5s ease forwards;
+
+}
+
+@keyframes sparkleMove {
+
+    from {
+
+        transform:
+            scale(0.2);
+
+        opacity: 1;
+
+    }
+
+    to {
+
+        transform:
+            scale(2)
+            translateY(-100px);
+
+        opacity: 0;
+
+    }
+
+}
+
+/* ---------------- FOOTER ---------------- */
+
+.note {
+
+    margin-top: 20px;
+
+    font-size: 13px;
+
+    opacity: 0.65;
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+<div class="card">
+
+<!-- ================= QUESTION ================= -->
+
+<div id="questionBox">
+
+    <div class="big-heart">
+        💗
+    </div>
+
+    <h1>
+        A Little Question...
+    </h1>
+
+    <div class="question">
+
+        Do you have a special place
+        in your heart for me? 💕🌹
+
+    </div>
+
+    <div class="subtitle">
+
+        Choose honestly...
+        because a little birthday surprise
+        is waiting for you. 🎁
+
+    </div>
+
+    <div class="buttons">
+
+        <button
+            class="yes"
+            onclick="showBirthday()">
+
+            YES 💗
+
+        </button>
+
+        <button
+            class="no"
+            onclick="noButton()">
+
+            NO 🙈
+
+        </button>
+
+    </div>
+
+    <div class="note">
+
+        Made especially for you 💕
+        
+    </div>
+
+</div>
+
+
+<!-- ================= BIRTHDAY ================= -->
+
+<div id="birthday">
+
+    <div class="big-heart">
+        💖
+    </div>
+
+    <h1>
+        Happy Birthday! 🎂
+    </h1>
+
+    <div class="rose-area">
+
+        🌹 🌹 🌹 🌹 🌹
+
+    </div>
+
+    <div class="message">
+
+        <h2>
+            🌸 A Special Message For You 🌸
+        </h2>
+
+        <p>
+
+            Happy Birthday to someone who makes
+            ordinary moments feel a little more
+            beautiful. 💗
+
+        </p>
+
+        <p>
+
+            I hope your special day is filled with
+            smiles, happiness, beautiful memories
+            and lots of love. 🌹✨
+
+        </p>
+
+        <p>
+
+            May this new year of your life bring
+            you wonderful moments, exciting
+            adventures and everything that makes
+            you smile.
+
+        </p>
+
+        <p>
+
+            And just like these roses, may there
+            always be something beautiful blooming
+            in your life. 🌹
+
+        </p>
+
+        <p>
+
+            Keep smiling, keep shining and have
+            the most amazing birthday! 💕
+
+        </p>
+
+        <div class="signature">
+
+            With lots of love 💗<br>— Rohan 💕
+
+        </div>
+
+    </div>
+
+    <div class="rose-area">
+
+        🌹 💕 🌹 💕 🌹
+
+    </div>
+
+</div>
+
+</div>
+
+</div>
+
+
+<script>
+
+/* =========================
+   YES BUTTON
+========================= */
+
+function showBirthday() {
+
+    document
+        .getElementById("questionBox")
+        .style.display = "none";
+
+    document
+        .getElementById("birthday")
+        .style.display = "block";
+
+    createRoses();
+
+    createSparkles();
+
+}
+
+
+/* =========================
+   NO BUTTON
+========================= */
+
+function noButton() {
+
+    const button =
+        document.querySelector(".no");
+
+    const messages = [
+
+        "Are you sure? 🥺",
+
+        "Think again 💗",
+
+        "Maybe YES? 🌹",
+
+        "Try YES 😭💗",
+
+        "One more chance? 💕"
+
+    ];
+
+    const randomMessage =
+        messages[
+            Math.floor(
+                Math.random() *
+                messages.length
+            )
+        ];
+
+    button.innerText =
+        randomMessage;
+
+    button.style.transform =
+        "translate(" +
+        (Math.random() * 100 - 50) +
+        "px," +
+        (Math.random() * 60 - 30) +
+        "px";
+
+}
+
+
+/* =========================
+   ROSE ANIMATION
+========================= */
+
+function createRoses() {
+
+    const roses = [
+        "🌹",
+        "🌹",
+        "🌹",
+        "🌷",
+        "💐"
+    ];
+
+    for (
+        let i = 0;
+        i < 45;
+        i++
+    ) {
+
+        const rose =
+            document.createElement("div");
+
+        rose.className =
+            "rose";
+
+        rose.innerText =
+            roses[
+                Math.floor(
+                    Math.random() *
+                    roses.length
+                )
+            ];
+
+        rose.style.left =
+            Math.random() * 100 + "vw";
+
+        rose.style.fontSize =
+            (25 + Math.random() * 28)
+            + "px";
+
+        rose.style.animationDuration =
+            (3 + Math.random() * 5)
+            + "s";
+
+        rose.style.animationDelay =
+            Math.random() * 2
+            + "s";
+
+        document.body.appendChild(rose);
+
+        setTimeout(
+            () => rose.remove(),
+            9000
+        );
+
+    }
+
+}
+
+
+/* =========================
+   SPARKLES
+========================= */
+
+function createSparkles() {
+
+    const symbols = [
+        "💗",
+        "💕",
+        "✨",
+        "🌸",
+        "💖"
+    ];
+
+    for (
+        let i = 0;
+        i < 35;
+        i++
+    ) {
+
+        setTimeout(() => {
+
+            const sparkle =
+                document.createElement("div");
+
+            sparkle.className =
+                "sparkle";
+
+            sparkle.innerText =
+                symbols[
+                    Math.floor(
+                        Math.random() *
+                        symbols.length
+                    )
+                ];
+
+            sparkle.style.left =
+                Math.random() * 100
+                + "vw";
+
+            sparkle.style.top =
+                (20 +
+                Math.random() * 70)
+                + "vh";
+
+            document.body.appendChild(
+                sparkle
+            );
+
+            setTimeout(
+                () => sparkle.remove(),
+                1600
+            );
+
+        }, i * 100);
+
+    }
+
+}
+
+</script>
+
+</body>
+
+</html>
